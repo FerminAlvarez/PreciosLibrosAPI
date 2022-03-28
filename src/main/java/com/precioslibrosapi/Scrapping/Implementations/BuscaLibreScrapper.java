@@ -39,7 +39,7 @@ public class BuscaLibreScrapper implements Scrapper {
 
             this.libro = new Libro(linkLibro, ScrappingUtils.convertirPrecio(precio), nombreTienda);
         } catch (IOException | NullPointerException e) {
-            e.printStackTrace();
+            System.out.println("No se pudo encontrar el libro en "+obtenerNombreTienda());
         }
     }
 
