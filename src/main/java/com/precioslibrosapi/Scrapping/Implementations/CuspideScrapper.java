@@ -2,6 +2,7 @@ package com.precioslibrosapi.Scrapping.Implementations;
 
 import com.precioslibrosapi.Bean.Libro;
 import com.precioslibrosapi.Scrapping.Scrapper;
+import com.precioslibrosapi.Scrapping.ScrappingUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -37,7 +38,7 @@ public class CuspideScrapper implements Scrapper {
             String linkLibro = "https://www.cuspide.com" + linkContainer.attr("href");
             String precio = portada.getElementsByClass("precio").first().text();
 
-            this.libro = new Libro(linkLibro, precio, nombreTienda);
+            this.libro = new Libro(linkLibro, ScrappingUtils.convertirPrecio(precio), nombreTienda);
         } catch (IOException | NullPointerException e) {
             e.printStackTrace();
         }

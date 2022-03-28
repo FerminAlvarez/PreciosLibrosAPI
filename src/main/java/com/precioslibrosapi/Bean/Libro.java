@@ -2,10 +2,10 @@ package com.precioslibrosapi.Bean;
 
 public class Libro {
     private String link;
-    private String precio;
+    private Integer precio;
     private String libreria;
 
-    public Libro(String link, String precio, String libreria) {
+    public Libro(String link, Integer precio, String libreria) {
         this.link = link;
         this.precio = precio;
         this.libreria = libreria;
@@ -19,11 +19,11 @@ public class Libro {
         this.link = link;
     }
 
-    public String getPrecio() {
+    public Integer getPrecio() {
         return precio;
     }
 
-    public void setPrecio(String precio) {
+    public void setPrecio(Integer precio) {
         this.precio = precio;
     }
 

@@ -38,7 +38,9 @@ public class LibroController {
             try {
                 hilos.get(scrappers.get(i)).join();
                 scrapper = scrappers.get(i);
-                listaLibros.add(scrapper.obtenerLibro() != null ? scrapper.obtenerLibro() : new Libro("", "", scrapper.obtenerNombreTienda()));
+                listaLibros.add(scrapper.obtenerLibro() != null ?
+                        scrapper.obtenerLibro()
+                        : new Libro("", 0, scrapper.obtenerNombreTienda()));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
