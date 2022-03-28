@@ -1,8 +1,13 @@
 package com.precioslibrosapi.Bean;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Libro {
+    @JsonProperty("Link")
     private String link;
+    @JsonProperty("Precio")
     private Integer precio;
+    @JsonProperty("Librería")
     private String libreria;
 
     public Libro(String link, Integer precio, String libreria) {
