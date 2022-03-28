@@ -27,30 +27,30 @@ mvn spring-boot:run
 
 #### Ejemplo
 
-`GET http://localhost:8080/libro/9789506445843/`
+`GET http://localhost:8080/libro/9789500209823/`
    
 ### Response
 
 ```json
 [
     {
-        "Link": "https://www.tematika.com/billy-summers-9789506445843.html",
-        "Precio": "$3.599,00",
+        "Link": "https://www.tematika.com/las-aventuras-de-sherlock-holmes-9789500209823.html",
+        "Precio": 1220,
         "Librería": "Tematika"
     },
     {
-        "Link": "https://www.buscalibre.com.ar/libro-billy-summers/9789506445843/p/53688790",
-        "Precio": "$ 3.599",
+        "Link": "https://www.buscalibre.com.ar/libro-una-aventura-literaria-con-antonio-pereira/9789500209823/p/50668519",
+        "Precio": 1520,
         "Librería": "BuscaLibre"
     },
     {
-        "Link": "https://www.cuspide.com/Libro/9789506445843/Billy+Summers",
-        "Precio": "AR$ 3.599,00",
+        "Link": "https://www.cuspide.com/Libro/9789500209823/Las+Aventuras+De+Sherlock+Holmes",
+        "Precio": 1520,
         "Librería": "Cuspide"
     },
     {
-        "Link": "https://www.libreriadonquijote.com.ar/productos/billy-summers/",
-        "Precio": "$3.599",
+        "Link": "",
+        "Precio": 0,
         "Librería": "Libreria Don Quijote"
     }
 ]
