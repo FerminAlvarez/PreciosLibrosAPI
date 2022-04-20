@@ -43,9 +43,4 @@ public class TematikaScrapper implements Scrapper {
             System.out.println("No se pudo encontrar el libro en "+obtenerNombreTienda());
         }
     }
-
-    @Override
-    public void run() {
-        scrappearLibro();
-    }
 }

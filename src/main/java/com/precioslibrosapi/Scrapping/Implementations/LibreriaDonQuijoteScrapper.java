@@ -29,7 +29,7 @@ public class LibreriaDonQuijoteScrapper implements Scrapper {
         return libro;
     }
 
-    private void scrappearLibro() {
+    public void scrappearLibro() {
         try {
             Document conexion = Jsoup.connect("https://www.libreriadonquijote.com.ar/search/?q=" + ISBN).get();
             Element portada = conexion.getElementsByClass("item-product").first();
@@ -41,10 +41,5 @@ public class LibreriaDonQuijoteScrapper implements Scrapper {
         } catch (IOException | NullPointerException e) {
             System.out.println("No se pudo encontrar el libro en "+obtenerNombreTienda());
         }
-    }
-
-    @Override
-    public void run() {
-        scrappearLibro();
     }
 }

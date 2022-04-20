@@ -18,4 +18,20 @@ public class ScrapperFactory {
         lista.add(new LibreriaDonQuijoteScrapper());
         return lista;
     }
+
+    public static Scrapper obtenerLibreriaDonQuijoteScrapper(){
+        return new LibreriaDonQuijoteScrapper();
+    }
+
+    public static Scrapper obtenerTematikaScrapper(){
+        return new TematikaScrapper();
+    }
+
+    public static Scrapper obtenerBuscaLibreScrapper(){
+        return new BuscaLibreScrapper();
+    }
+
+    public static Scrapper obtenerCuspideScrapper(){
+        return new CuspideScrapper();
+    }
 }

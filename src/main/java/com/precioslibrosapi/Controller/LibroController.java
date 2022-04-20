@@ -3,49 +3,74 @@ package com.precioslibrosapi.Controller;
 import com.precioslibrosapi.Bean.Libro;
 import com.precioslibrosapi.Scrapping.Scrapper;
 import com.precioslibrosapi.Scrapping.ScrapperFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
-@RequestMapping("/libro")
 public class LibroController {
 
-    @GetMapping("/{ISBN}")
+    @GetMapping("/libreriadonquijote/{ISBN}")
     public @ResponseBody
-    List<Libro> obtenerLibro(@PathVariable String ISBN) {
-        return obtenerPrecios(ISBN);
+    Libro obtenerLibroLibreriaDonQuijote(@PathVariable String ISBN) {
+        Scrapper scrapper = ScrapperFactory.obtenerLibreriaDonQuijoteScrapper();
+        scrapper.establecerISBN(ISBN);
+        scrapper.scrappearLibro();
+        Libro libro = scrapper.obtenerLibro();
+        if(libro != null){
+            return libro;
+        }else{
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "entity not found"
+            );
+        }
     }
 
-    private List<Libro> obtenerPrecios(String ISBN) {
-        List<Libro> listaLibros = new ArrayList<>();
-        List<Scrapper> scrappers = ScrapperFactory.obtenerScrappers();
-        Map<Scrapper, Thread> hilos = new HashMap<>();
-
-        for (Scrapper s : scrappers) {
-            s.establecerISBN(ISBN);
-            Thread hilo = new Thread(s);
-            hilos.put(s, hilo);
-            hilo.start();
+    @GetMapping("/cuspide/{ISBN}")
+    public @ResponseBody
+    Libro obtenerLibroCuspide(@PathVariable String ISBN) {
+        Scrapper scrapper = ScrapperFactory.obtenerCuspideScrapper();
+        scrapper.establecerISBN(ISBN);
+        scrapper.scrappearLibro();
+        Libro libro = scrapper.obtenerLibro();
+        if(libro != null){
+            return libro;
+        }else{
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "entity not found"
+            );
         }
+    }
 
-        Scrapper scrapper;
-
-        for (int i = 0; i < hilos.size(); i++) {
-            try {
-                hilos.get(scrappers.get(i)).join();
-                scrapper = scrappers.get(i);
-                listaLibros.add(scrapper.obtenerLibro() != null ?
-                        scrapper.obtenerLibro()
-                        : new Libro("", 0, scrapper.obtenerNombreTienda()));
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+    @GetMapping("/tematika/{ISBN}")
+    public @ResponseBody
+    Libro obtenerLibroTematika(@PathVariable String ISBN) {
+        Scrapper scrapper = ScrapperFactory.obtenerTematikaScrapper();
+        scrapper.establecerISBN(ISBN);
+        scrapper.scrappearLibro();
+        Libro libro = scrapper.obtenerLibro();
+        if(libro != null){
+            return libro;
+        }else{
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "entity not found"
+            );
         }
+    }
 
-        return listaLibros;
+    @GetMapping("/buscalibre/{ISBN}")
+    public @ResponseBody
+    Libro obtenerLibroBuscalibre(@PathVariable String ISBN) {
+        Scrapper scrapper = ScrapperFactory.obtenerBuscaLibreScrapper();
+        scrapper.establecerISBN(ISBN);
+        scrapper.scrappearLibro();
+        Libro libro = scrapper.obtenerLibro();
+        if(libro != null){
+            return libro;
+        }else{
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "entity not found"
+            );
+        }
     }
 }

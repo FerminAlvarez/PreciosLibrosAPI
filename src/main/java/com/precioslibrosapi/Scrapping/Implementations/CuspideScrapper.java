@@ -29,7 +29,7 @@ public class CuspideScrapper implements Scrapper {
         return libro;
     }
 
-    private void scrappearLibro() {
+    public void scrappearLibro() {
         try {
             Document conexion = Jsoup.connect("https://www.cuspide.com/resultados.aspx?c=" + ISBN + "&por=pal&orden=re").get();
             Element portada = conexion.getElementsByClass("libro libro").first();
@@ -42,10 +42,5 @@ public class CuspideScrapper implements Scrapper {
         } catch (IOException | NullPointerException e) {
             System.out.println("No se pudo encontrar el libro en "+obtenerNombreTienda());
         }
-    }
-
-    @Override
-    public void run() {
-        scrappearLibro();
     }
 }
