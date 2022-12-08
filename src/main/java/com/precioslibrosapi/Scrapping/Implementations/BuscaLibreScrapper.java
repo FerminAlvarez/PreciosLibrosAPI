@@ -34,10 +34,12 @@ public class BuscaLibreScrapper implements Scrapper {
             Document conexion = Jsoup.connect("https://www.buscalibre.com.ar/libros/search?q=" + ISBN).get();
             Element portada = conexion.getElementsByClass("info-libro").first();
 
-            String precio = portada.getElementsByClass("precioAhora").first().text();
+            String titulo = portada.getElementsByClass("tituloProducto").first().text();
             String linkLibro = conexion.location();
+            String precio = portada.getElementsByClass("precioAhora").first().text();
+            String linkImagen = conexion.getElementsByClass("imagen").first().selectFirst("img").attr("data-src");
 
-            this.libro = new Libro(linkLibro, ScrappingUtils.convertirPrecio(precio), nombreTienda);
+            this.libro = new Libro(titulo, linkLibro, ScrappingUtils.convertirPrecio(precio), nombreTienda, linkImagen);
         } catch (IOException | NullPointerException e) {
             System.out.println("No se pudo encontrar el libro en "+obtenerNombreTienda());
         }

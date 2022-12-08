@@ -32,13 +32,14 @@ public class TematikaScrapper implements Scrapper {
     public void scrappearLibro() {
         try {
             Document conexion = Jsoup.connect("https://www.tematika.com/catalogsearch/result/?q=" + ISBN).get();
-            conexion = Jsoup.connect("https://www.tematika.com/catalogsearch/result/?q=" + ISBN).get();
             Element portada = conexion.getElementsByClass("item item-row-last first").first();
 
+            String titulo = portada.getElementsByClass("product-name").first().selectFirst("a").text();
             String linkLibro = portada.getElementsByClass("image-photo").attr("href");
             String precio = portada.getElementsByClass("regular-price").text();
+            String linkImagen = portada.getElementsByClass("image-photo").first().selectFirst("img").attr("src");
 
-            this.libro = new Libro(linkLibro, ScrappingUtils.convertirPrecio(precio), nombreTienda);
+            this.libro = new Libro(titulo, linkLibro, ScrappingUtils.convertirPrecio(precio), nombreTienda, linkImagen);
         } catch (IOException | NullPointerException e) {
             System.out.println("No se pudo encontrar el libro en "+obtenerNombreTienda());
         }

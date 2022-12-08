@@ -3,17 +3,23 @@ package com.precioslibrosapi.Bean;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Libro {
-    @JsonProperty("Link")
+    @JsonProperty("titulo")
+    private String titulo;
+    @JsonProperty("link")
     private String link;
-    @JsonProperty("Precio")
+    @JsonProperty("precio")
     private Integer precio;
-    @JsonProperty("Librería")
+    @JsonProperty("libreria")
     private String libreria;
+    @JsonProperty("link_imagen")
+    private String imagen;
 
-    public Libro(String link, Integer precio, String libreria) {
+    public Libro(String titulo, String link, Integer precio, String libreria, String imagen) {
+        this.titulo = titulo;
         this.link = link;
         this.precio = precio;
         this.libreria = libreria;
+        this.imagen = imagen;
     }
 
     public String getLink() {
@@ -38,5 +44,21 @@ public class Libro {
 
     public void setLibreria(String libreria) {
         this.libreria = libreria;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 }

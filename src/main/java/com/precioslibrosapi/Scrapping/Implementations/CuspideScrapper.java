@@ -35,10 +35,13 @@ public class CuspideScrapper implements Scrapper {
             Element portada = conexion.getElementsByClass("libro libro").first();
             Element linkContainer = portada.selectFirst("a");
 
+            String titulo = conexion.getElementsByClass("md-datos").first().selectFirst("a").text();
             String linkLibro = "https://www.cuspide.com" + linkContainer.attr("href");
             String precio = portada.getElementsByClass("precio").first().text();
+            String imagen = portada.selectFirst("img").attr("src");
+            String linkImagen = imagen.replace("medium","large");
 
-            this.libro = new Libro(linkLibro, ScrappingUtils.convertirPrecio(precio), nombreTienda);
+            this.libro = new Libro(titulo, linkLibro, ScrappingUtils.convertirPrecio(precio), nombreTienda, linkImagen);
         } catch (IOException | NullPointerException e) {
             System.out.println("No se pudo encontrar el libro en "+obtenerNombreTienda());
         }
