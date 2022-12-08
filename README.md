@@ -22,37 +22,27 @@ mvn spring-boot:run
 ## Obtención de precios
 
 ### Request
+#### Endpoints
 
-`GET http://localhost:8080/libro/<ISBN>/`
+`GET http://localhost:8080/libreriadonquijote/<ISBN>/`
+
+`GET http://localhost:8080/cuspide/<ISBN>/`
+
+`GET http://localhost:8080/tematika/<ISBN>/`
+
+`GET http://localhost:8080/buscalibre/<ISBN>/`
 
 #### Ejemplo
 
-`GET http://localhost:8080/libro/9789500209823/`
+`GET http://localhost:8080/libreriadonquijote/9789500209823/`
    
 ### Response
 
 ```json
-[
-    {
-        "Link": "https://www.tematika.com/las-aventuras-de-sherlock-holmes-9789500209823.html",
-        "Precio": 1220,
-        "Librería": "Tematika"
-    },
-    {
-        "Link": "https://www.buscalibre.com.ar/libro-una-aventura-literaria-con-antonio-pereira/9789500209823/p/50668519",
-        "Precio": 1520,
-        "Librería": "BuscaLibre"
-    },
-    {
-        "Link": "https://www.cuspide.com/Libro/9789500209823/Las+Aventuras+De+Sherlock+Holmes",
-        "Precio": 1520,
-        "Librería": "Cuspide"
-    },
-    {
-        "Link": "",
-        "Precio": 0,
-        "Librería": "Libreria Don Quijote"
-    }
-]
+{
+  "link" : "https://www.libreriadonquijote.com.ar/productos/capitan-mediavista-en-la-bahia-de-los-cangrejos-muertos/",
+  "precio" : 1590,
+  "libreria" : "Libreria Don Quijote"
+}
 ```
 
