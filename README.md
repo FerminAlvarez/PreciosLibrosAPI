@@ -48,3 +48,14 @@ mvn spring-boot:run
 }
 ```
 
+### Demo
+`GET https://precioslibrosapi-production.up.railway.app/libreriadonquijote/<ISBN>/`
+
+`GET https://precioslibrosapi-production.up.railway.app/cuspide/<ISBN>/`
+
+`GET https://precioslibrosapi-production.up.railway.app/tematika/<ISBN>/`
+
+`GET https://precioslibrosapi-production.up.railway.app/buscalibre/<ISBN>/`
+
+#### Ejemplo
+`GET https://precioslibrosapi-production.up.railway.app/buscalibre/9788466658843/`
