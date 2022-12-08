@@ -34,15 +34,17 @@ mvn spring-boot:run
 
 #### Ejemplo
 
-`GET http://localhost:8080/libreriadonquijote/9789500209823/`
+`GET http://localhost:8080/buscalibre/9789876094887/`
    
 ### Response
 
 ```json
 {
-  "link" : "https://www.libreriadonquijote.com.ar/productos/capitan-mediavista-en-la-bahia-de-los-cangrejos-muertos/",
-  "precio" : 1590,
-  "libreria" : "Libreria Don Quijote"
+  "titulo" : "Secretos Familiares (Spanish Edition)",
+  "link" : "https://www.buscalibre.com.ar/libro-secretos-familiares-spanish-edition/9789876094887/p/46864022",
+  "precio" : 3420,
+  "libreria" : "BuscaLibre",
+  "link_imagen" : "https://images.cdn2.buscalibre.com/fit-in/360x360/c3/7b/c37b396e223c79991334515c594654a6.jpg"
 }
 ```
 
