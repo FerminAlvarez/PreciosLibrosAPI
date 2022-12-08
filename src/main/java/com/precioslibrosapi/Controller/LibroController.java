@@ -10,6 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 @RestController
 public class LibroController {
 
+    @CrossOrigin
     @GetMapping("/libreriadonquijote/{ISBN}")
     public @ResponseBody
     Libro obtenerLibroLibreriaDonQuijote(@PathVariable String ISBN) {
@@ -26,6 +27,7 @@ public class LibroController {
         }
     }
 
+    @CrossOrigin
     @GetMapping("/cuspide/{ISBN}")
     public @ResponseBody
     Libro obtenerLibroCuspide(@PathVariable String ISBN) {
@@ -42,6 +44,7 @@ public class LibroController {
         }
     }
 
+    @CrossOrigin
     @GetMapping("/tematika/{ISBN}")
     public @ResponseBody
     Libro obtenerLibroTematika(@PathVariable String ISBN) {
@@ -58,6 +61,7 @@ public class LibroController {
         }
     }
 
+    @CrossOrigin
     @GetMapping("/buscalibre/{ISBN}")
     public @ResponseBody
     Libro obtenerLibroBuscalibre(@PathVariable String ISBN) {
