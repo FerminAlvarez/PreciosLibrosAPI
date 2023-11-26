@@ -19,6 +19,18 @@ cd PreciosLibrosAPI/
 mvn spring-boot:run
 ```
 
+Otra opción es montando tu propia imagen Docker
+```shell
+./mvnw install   
+docker build -t ferminalvarezdev/precioslibrosapiscrapper .
+docker tag precioslibrosapiscrapper ferminalvarezdev/precioslibrosapiscrapper
+```
+O utilizando la imagen pública
+```shell
+docker pull ferminalvarezdev/precioslibrosapiscrapper:latest
+docker run -p 8080:8080 ferminalvarezdev/precioslibrosapiscrapper
+```
+
 ## Obtención de precios
 
 ### Request
